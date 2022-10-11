@@ -1,2 +1,2 @@
 # it_code_group_backend
-"IT CODE GROUP" backend internship
+This project was made during a backend internship in "IT CODE GROUP".
