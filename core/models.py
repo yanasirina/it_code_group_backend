@@ -23,7 +23,7 @@ class Item(models.Model):
     done = models.DateTimeField(verbose_name="Выполнено", blank=True, null=True)
     created = models.DateTimeField(verbose_name="Создано", auto_now_add=True, db_index=True)
     updated = models.DateTimeField(verbose_name="Изменено", auto_now=True)
-    tag = models.ManyToManyField(verbose_name="Метки", blank=True)
+    tag = models.ManyToManyField(Tag, verbose_name="Метки", blank=True)
 
     class Meta:
         verbose_name = "Задача"
