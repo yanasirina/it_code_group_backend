@@ -134,3 +134,4 @@ DATETIME_FORMAT = 'd.m.Y H:i'
 SHORT_DATETIME_FORMAT = 'd.m.Y H:i'
 
 LOGIN_URL = '/admin/login/'
+
