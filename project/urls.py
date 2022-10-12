@@ -26,8 +26,9 @@ schema_view = get_swagger_view(title='API')
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include(core.urls))
+    path("", schema_view),
+    path("", include(core.urls)),
 ]
 
-if settings.DEDUG:
+if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
