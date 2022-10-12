@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 import keys
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     "rest_framework",
     "rest_framework.authtoken",
+    "rest_framework_swagger",
 
     "core.apps.CoreConfig"
 ]
@@ -141,3 +142,10 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
     'DATETIME_FORMAT': '%Y-%m-%d %H:%M:%S',
 }
+
+STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [BASE_DIR / "core/static"]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "/media/"
