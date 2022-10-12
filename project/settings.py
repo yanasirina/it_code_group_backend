@@ -127,3 +127,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+DATE_INPUT_FORMATS = ['%d.%m.%Y', '%Y-%m-%d']
+DATE_FORMAT = 'd.m.Y'
+DATETIME_FORMAT = 'd.m.Y H:i'
+SHORT_DATETIME_FORMAT = 'd.m.Y H:i'
