@@ -142,6 +142,7 @@ LOGIN_URL = '/admin/login/'
 
 REST_FRAMEWORK = {
     # 'DEFAULT_RENDERER_CLASSES': ('rest_framework.renderers.JSONRenderer',),
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
     'DATE_INPUT_FORMATS': DATE_INPUT_FORMATS,
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
     'DATETIME_FORMAT': '%Y-%m-%d %H:%M:%S',
