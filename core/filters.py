@@ -1,12 +1,13 @@
-import django_filters
+import django_filters.rest_framework as filters
 
 from . import models
 
 
-class Tag(django_filters.rest_framework.FilterSet):
-    # id = django_filters.NumberFilter(field_name='id', lookup_expr='gte')
-    id = django_filters.NumberFilter(field_name='id')
-    name = django_filters.CharFilter(field_name='name', lookup_expr='icontains')
+class Tag(filters.FilterSet):
+    min_id = filters.NumberFilter(field_name="id", lookup_expr='gte')
+    max_id = filters.NumberFilter(field_name="id", lookup_expr='lte')
+    id = filters.NumberFilter(field_name='id')
+    name = filters.CharFilter(field_name='name', lookup_expr='icontains')
 
     class Meta:
         models = models.Tag

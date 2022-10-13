@@ -14,3 +14,9 @@ class TagViewSet(ReadOnlyModelViewSet):
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
     filterset_class = filters.Tag
 
+    # def list(self, request, *args, **kwargs):
+    #     serializer = serializers.TagSearch(data=request.query_params)
+    #     serializer.is_valid(raise_exception=True)
+    #
+    #     return super().list(request, *args, **kwargs)
+
