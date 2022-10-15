@@ -20,3 +20,7 @@ class TagViewSet(ReadOnlyModelViewSet):
     #
     #     return super().list(request, *args, **kwargs)
 
+
+class ItemViewSet(ReadOnlyModelViewSet):
+    queryset = models.Item.objects.all()
+    serializer_class = serializers.ItemSerializer

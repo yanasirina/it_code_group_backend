@@ -28,7 +28,7 @@ class Item(models.Model):
     class Meta:
         verbose_name = "Задача"
         verbose_name_plural = "Список задач"
-        ordering = ("priority", "created")
+        ordering = ("-priority", "-created")
 
     def __str__(self):
         return self.name

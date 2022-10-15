@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Tag
+from .models import Tag, Item
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -24,3 +24,12 @@ class TagSearch(serializers.Serializer):
 
     def validate(self, attrs):
         return attrs
+
+
+class ItemSerializer(serializers.ModelSerializer):
+    tag_name = serializers.StringRelatedField(source='tag.name')
+
+    class Meta:
+        model = Item
+        fields = ('name', 'priority', 'created', 'done', 'tag', 'tag_name')
+
