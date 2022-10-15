@@ -1,6 +1,7 @@
 import django_filters
 from rest_framework.viewsets import ReadOnlyModelViewSet
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 from . import serializers
 from . import models
@@ -9,6 +10,7 @@ from . import filters
 
 class TagViewSet(ReadOnlyModelViewSet):
     authentication_classes = (SessionAuthentication, TokenAuthentication)
+    permission_classes = (IsAuthenticated, )
     queryset = models.Tag.objects.all()
     serializer_class = serializers.TagSerializer
     filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
