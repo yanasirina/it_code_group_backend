@@ -27,9 +27,7 @@ class TagSearch(serializers.Serializer):
 
 
 class ItemSerializer(serializers.ModelSerializer):
-    tag_name = serializers.StringRelatedField(source='tag.name')
-
     class Meta:
         model = Item
-        fields = ('name', 'priority', 'created', 'done', 'tag', 'tag_name')
+        exclude = ('user', )
 
