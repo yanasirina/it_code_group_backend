@@ -5,6 +5,7 @@ from rest_framework.authentication import SessionAuthentication, TokenAuthentica
 from rest_framework.permissions import IsAuthenticated, DjangoModelPermissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from django.utils.timezone import now
 
 from . import serializers
 from . import models
@@ -40,6 +41,25 @@ class ItemViewSet(ModelViewSet):
         item = models.Item.objects.get(pk=pk)
         tags = [str(c) for c in item.tag.all()]
         return Response({'tags': tags})
+
+    @action(detail=True, methods=['post', 'put', 'patch'])
+    def set_done(self, request, pk=None):
+        item = self.get_object()
+        if not item.done:
+            item.done = now()
+            item.save(update_fields=['done'])
+        serializer = serializers.ItemSerializer(instance=item)
+        return Response(serializer.data)\
+
+
+    @action(detail=True, methods=['post', 'put', 'patch'])
+    def unset_done(self, request, pk=None):
+        item = self.get_object()
+        if item.done:
+            item.done = None
+            item.save(update_fields=['done'])
+        serializer = serializers.ItemSerializer(instance=item)
+        return Response(serializer.data)
 
 
 class RegisterUser(GenericAPIView):
