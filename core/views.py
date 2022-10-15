@@ -3,6 +3,8 @@ from rest_framework.viewsets import ReadOnlyModelViewSet, ModelViewSet
 from rest_framework.generics import GenericAPIView
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated, DjangoModelPermissions
+from rest_framework.decorators import action
+from rest_framework.response import Response
 
 from . import serializers
 from . import models
@@ -32,6 +34,12 @@ class ItemViewSet(ModelViewSet):
 
     def get_queryset(self):
         return models.Item.objects.filter(user=self.request.user)
+
+    @action(detail=True, methods=['get'])
+    def tags(self, request, pk=None):
+        item = models.Item.objects.get(pk=pk)
+        tags = [str(c) for c in item.tag.all()]
+        return Response({'tags': tags})
 
 
 class RegisterUser(GenericAPIView):
