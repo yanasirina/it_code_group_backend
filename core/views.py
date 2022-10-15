@@ -44,22 +44,25 @@ class ItemViewSet(ModelViewSet):
 
     @action(detail=True, methods=['post', 'put', 'patch'])
     def set_done(self, request, pk=None):
-        item = self.get_object()
-        if not item.done:
-            item.done = now()
-            item.save(update_fields=['done'])
-        serializer = serializers.ItemSerializer(instance=item)
-        return Response(serializer.data)\
-
+        models.Item.objects.filter(pk=pk, done__isnull=True).update(done=now())
+        # item = self.get_object()
+        # if not item.done:
+        #     item.done = now()
+        #     item.save(update_fields=['done'])
+        # serializer = serializers.ItemSerializer(instance=item)
+        # return Response(serializer.data)
+        return Response({'message': 'ok'})
 
     @action(detail=True, methods=['post', 'put', 'patch'])
     def unset_done(self, request, pk=None):
-        item = self.get_object()
-        if item.done:
-            item.done = None
-            item.save(update_fields=['done'])
-        serializer = serializers.ItemSerializer(instance=item)
-        return Response(serializer.data)
+        models.Item.objects.filter(pk=pk, done__isnull=False).update(done=None)
+        # item = self.get_object()
+        # if item.done:
+        #     item.done = None
+        #     item.save(update_fields=['done'])
+        # serializer = serializers.ItemSerializer(instance=item)
+        # return Response(serializer.data)
+        return Response({'message': 'ok'})
 
 
 class RegisterUser(GenericAPIView):
