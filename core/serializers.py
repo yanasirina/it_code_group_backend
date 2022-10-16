@@ -27,6 +27,7 @@ class TagSearch(serializers.Serializer):
 
 
 class ItemSerializer(serializers.ModelSerializer):
+    # tag = TagSerializer(many=True)
 
     class Meta:
         model = Item
