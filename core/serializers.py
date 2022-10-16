@@ -27,9 +27,8 @@ class TagSearch(serializers.Serializer):
 
 
 class ItemSerializer(serializers.ModelSerializer):
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
         model = Item
-        fields = '__all__'
+        exclude = ('user', )
 

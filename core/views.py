@@ -36,6 +36,10 @@ class ItemViewSet(ModelViewSet):
     def get_queryset(self):
         return models.Item.objects.filter(user=self.request.user)
 
+    def perform_create(self, serializer):
+        serializer.validated_data['user'] = self.request.user
+        super().perform_create(serializer)
+
     @action(detail=True, methods=['get'])
     def tags(self, request, pk=None):
         item = models.Item.objects.get(pk=pk)
