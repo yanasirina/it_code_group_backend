@@ -26,7 +26,7 @@ SECRET_KEY = keys.MY_SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "rest_framework_swagger",
+    'corsheaders.middleware.CorsMiddleware',
 
     "core.apps.CoreConfig"
 ]
@@ -154,3 +155,9 @@ STATICFILES_DIRS = [BASE_DIR / "core/static"]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+
