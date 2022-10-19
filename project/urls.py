@@ -27,7 +27,7 @@ schema_view = get_swagger_view(title='API')
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", schema_view),
-    path("", include(core.urls)),
+    path("", include(core.urls, namespace='core')),
 ]
 
 if settings.DEBUG:
