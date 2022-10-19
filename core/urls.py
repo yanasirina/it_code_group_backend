@@ -4,6 +4,8 @@ from rest_framework.routers import DefaultRouter
 import core.views
 
 
+app_name = 'core'
+
 urlpatterns = [
     path('user/register/', core.views.RegisterUser.as_view(), name='user_register'),
     path('user/login/', core.views.LoginUser.as_view(),  name='user_login'),
