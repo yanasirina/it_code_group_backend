@@ -12,3 +12,5 @@ class Tag(admin.ModelAdmin):
 class Item(admin.ModelAdmin):
     list_display = ("name", "done")
     search_fields = ("name", )
+    list_filter = ("created", )
+    autocomplete_fields = ('user', 'tag')
