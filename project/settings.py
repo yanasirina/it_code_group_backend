@@ -161,3 +161,4 @@ CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:5173",
 ]
 
+MY_EXTERNAL_SERVICE = 'http://127.0.0.1:8000/'
